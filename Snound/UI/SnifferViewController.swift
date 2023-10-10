@@ -9,28 +9,22 @@ import UIKit
 
 class SnifferViewController: UIViewController {
     
-    lazy var backgroundColor: CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        gradient.colors = [
-            UIColor(resource: R.color.background)!.withAlphaComponent(0.4).cgColor,
-            UIColor(resource: R.color.background)!.withAlphaComponent(0.5).cgColor,
-            UIColor(resource: R.color.background)!.withAlphaComponent(0.6).cgColor,
-        ]
-        return gradient
-    }()
+    private let gradient: CAGradientLayer = CAGradientLayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .gray
-        backgroundColor.frame = view.bounds
-        view.layer.insertSublayer(backgroundColor, at: 0)
+        view.setGradientBackground(gradient: gradient,colors: [
+            UIColor(resource: R.color.background)!.withAlphaComponent(0.4).cgColor,
+            UIColor(resource: R.color.background)!.withAlphaComponent(0.5).cgColor,
+            UIColor(resource: R.color.background)!.withAlphaComponent(0.6).cgColor,
+        ])
     }
     
     override func viewWillTransition(to size: CGSize,
                                      with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        backgroundColor.frame.size = size
-        view.layer.insertSublayer(backgroundColor, at: 0)
+        gradient.frame.size = size
     }
 }
 
