@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		90F23A5E27286E351CE36B46 /* Pods_Snound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19D5C1287F56FA9F10BE1B8 /* Pods_Snound.framework */; };
+		C97A38DB2AD6957A00DCAD0C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A38DA2AD6957A00DCAD0C /* UIViewController+Extension.swift */; };
+		C97A38DD2AD6959800DCAD0C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A38DC2AD6959800DCAD0C /* UIImage+Extension.swift */; };
 		C9C4CBF82AD5C1E700FD7A33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4CBF72AD5C1E700FD7A33 /* AppDelegate.swift */; };
 		C9C4CBFA2AD5C1E700FD7A33 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4CBF92AD5C1E700FD7A33 /* SceneDelegate.swift */; };
 		C9C4CBFC2AD5C1E700FD7A33 /* SnifferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4CBFB2AD5C1E700FD7A33 /* SnifferViewController.swift */; };
@@ -22,6 +24,8 @@
 		369ACDBD490BC1DFA7439DE0 /* Pods-Snound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snound.debug.xcconfig"; path = "Target Support Files/Pods-Snound/Pods-Snound.debug.xcconfig"; sourceTree = "<group>"; };
 		86346184758FC004F2D5C411 /* Pods-Snound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snound.release.xcconfig"; path = "Target Support Files/Pods-Snound/Pods-Snound.release.xcconfig"; sourceTree = "<group>"; };
 		B19D5C1287F56FA9F10BE1B8 /* Pods_Snound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97A38DA2AD6957A00DCAD0C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		C97A38DC2AD6959800DCAD0C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C9C4CBF42AD5C1E700FD7A33 /* Snound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C4CBF72AD5C1E700FD7A33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C4CBF92AD5C1E700FD7A33 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				C9C4CC0F2AD5D8D700FD7A33 /* UIView+Extension.swift */,
+				C97A38DA2AD6957A00DCAD0C /* UIViewController+Extension.swift */,
+				C97A38DC2AD6959800DCAD0C /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,6 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C97A38DB2AD6957A00DCAD0C /* UIViewController+Extension.swift in Sources */,
+				C97A38DD2AD6959800DCAD0C /* UIImage+Extension.swift in Sources */,
 				C9C4CBFC2AD5C1E700FD7A33 /* SnifferViewController.swift in Sources */,
 				C9C4CBF82AD5C1E700FD7A33 /* AppDelegate.swift in Sources */,
 				C9C4CBFA2AD5C1E700FD7A33 /* SceneDelegate.swift in Sources */,
@@ -417,8 +425,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,8 +460,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
