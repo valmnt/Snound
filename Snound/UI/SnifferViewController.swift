@@ -19,6 +19,15 @@ class SnifferViewController: UIViewController {
         return button
     }()
     
+    private lazy var mainLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Tap to recognize"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 25)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private var compactConstraints: [NSLayoutConstraint] = []
     private var regularConstraints: [NSLayoutConstraint] = []
     private var sharedConstraints: [NSLayoutConstraint] = []
@@ -32,6 +41,7 @@ class SnifferViewController: UIViewController {
             UIColor(resource: R.color.background)!.withAlphaComponent(0.6).cgColor,
         ])
         view.addSubview(snifferButton)
+        view.addSubview(mainLabel)
         setupConstraints()
         layoutTrait()
     }
@@ -51,8 +61,13 @@ class SnifferViewController: UIViewController {
     
     private func setupConstraints() {
         sharedConstraints.append(contentsOf: [
+            // SnifferButton
             snifferButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             snifferButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            // MainLabel
+            mainLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mainLabel.bottomAnchor.constraint(equalTo: snifferButton.topAnchor, constant: -40)
         ])
         
         regularConstraints.append(contentsOf: [
@@ -73,9 +88,11 @@ class SnifferViewController: UIViewController {
                     compactConstraints: compactConstraints,
             compactCallback: {
                 responsiveSnifferButton(cornerRadius: 75, imageSize: 75)
+                mainLabelFont(size: 25)
             },
             regularCallback: {
                 responsiveSnifferButton(cornerRadius: 150, imageSize: 150)
+                mainLabelFont(size: 40)
             }
         )
     }
@@ -83,5 +100,9 @@ class SnifferViewController: UIViewController {
     private func responsiveSnifferButton(cornerRadius: CGFloat, imageSize: CGFloat) {
         snifferButton.layer.cornerRadius = cornerRadius
         snifferButton.setImage(UIImage(resource: R.image.waveSound)?.resize(newWidth: imageSize), for: .normal)
+    }
+    
+    private func mainLabelFont(size: CGFloat) {
+        mainLabel.font = .boldSystemFont(ofSize: size)
     }
 }
