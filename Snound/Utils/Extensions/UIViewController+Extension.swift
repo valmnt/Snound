@@ -31,4 +31,14 @@ extension UIViewController {
             regularCallback()
         }
     }
+    
+    func layoutTrait(traitCollection:UITraitCollection,
+                     compactCallback: (() -> Void),
+                     regularCallback: (() -> Void)) {
+        if traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular {
+            compactCallback()
+        } else {
+            regularCallback()
+        }
+    }
 }

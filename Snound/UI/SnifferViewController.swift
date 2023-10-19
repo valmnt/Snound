@@ -57,7 +57,17 @@ class SnifferViewController: UIViewController {
         layoutTrait()
     }
     
-    @objc func sniff() {}
+    @objc func sniff() {
+        animatedSniffButton()
+    }
+    
+    private func animatedSniffButton() {
+        UIView.animate(withDuration: 0.15, delay: 0.1, options: [], animations: {
+            self.snifferButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+        }) { (finished) in
+            self.snifferButton.transform = CGAffineTransform.identity
+        }
+    }
     
     private func setupConstraints() {
         sharedConstraints.append(contentsOf: [
