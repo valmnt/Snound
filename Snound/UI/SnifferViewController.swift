@@ -10,6 +10,7 @@ import UIKit
 class SnifferViewController: UIViewController {
     
     private let gradient: CAGradientLayer = CAGradientLayer()
+    private var animatableLayer : CAShapeLayer = CAShapeLayer()
     
     private lazy var snifferButton: UIButton = {
         let button = UIButton()
@@ -50,6 +51,14 @@ class SnifferViewController: UIViewController {
                                      with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         gradient.frame.size = size
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.animatableLayer.position = self.snifferButton.center
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        radioWaveAnimation()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -58,10 +67,43 @@ class SnifferViewController: UIViewController {
     }
     
     @objc func sniff() {
-        animatedSniffButton()
+        startSniffButtonAnimation()
+        startRadioWaveAnimation()
     }
     
-    private func animatedSniffButton() {
+    private func radioWaveAnimation() {
+        animatableLayer.fillColor = CGColor(red: 144/255.0, green: 238/255.0, blue: 144/255.0, alpha: 0.5)
+        animatableLayer.path = UIBezierPath(roundedRect: snifferButton.bounds, cornerRadius: snifferButton.layer.cornerRadius).cgPath
+        animatableLayer.frame = snifferButton.bounds
+        animatableLayer.position = snifferButton.center
+        animatableLayer.cornerRadius = snifferButton.layer.cornerRadius
+        animatableLayer.isHidden = true
+        view.layer.addSublayer(animatableLayer)
+    }
+    
+    private func startRadioWaveAnimation() {
+        animatableLayer.isHidden = false
+        let layerAnimation = CABasicAnimation(keyPath: "transform.scale")
+        layerAnimation.fromValue = 1
+        layerAnimation.toValue = 3
+        layerAnimation.isAdditive = false
+
+        let layerAnimation2 = CABasicAnimation(keyPath: "opacity")
+        layerAnimation2.fromValue = 1
+        layerAnimation2.toValue = 0
+        layerAnimation2.isAdditive = false
+
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.animations = [layerAnimation,layerAnimation2]
+        groupAnimation.duration = CFTimeInterval(2)
+        groupAnimation.fillMode = CAMediaTimingFillMode.forwards
+        groupAnimation.isRemovedOnCompletion = true
+        groupAnimation.repeatCount = .infinity
+
+        animatableLayer.add(groupAnimation, forKey: "growingAnimation")
+    }
+    
+    private func startSniffButtonAnimation() {
         UIView.animate(withDuration: 0.15, delay: 0.1, options: [], animations: {
             self.snifferButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
         }) { (finished) in
@@ -77,7 +119,7 @@ class SnifferViewController: UIViewController {
             
             // MainLabel
             mainLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            mainLabel.bottomAnchor.constraint(equalTo: snifferButton.topAnchor, constant: -40)
+            mainLabel.bottomAnchor.constraint(equalTo: snifferButton.topAnchor, constant: -40),
         ])
         
         regularConstraints.append(contentsOf: [
