@@ -67,8 +67,12 @@ class SnifferViewController: UIViewController {
     }
     
     @objc func sniff() {
-        startSniffButtonAnimation()
-        startRadioWaveAnimation()
+        if animatableLayer.isHidden {
+            startSniffButtonAnimation()
+            startRadioWaveAnimation()
+        } else {
+            stopRadioWaveAnimation()
+        }
     }
     
     private func radioWaveAnimation() {
@@ -101,6 +105,11 @@ class SnifferViewController: UIViewController {
         groupAnimation.repeatCount = .infinity
 
         animatableLayer.add(groupAnimation, forKey: "growingAnimation")
+    }
+    
+    private func stopRadioWaveAnimation() {
+        animatableLayer.removeAnimation(forKey: "growingAnimation")
+        animatableLayer.isHidden = true
     }
     
     private func startSniffButtonAnimation() {
