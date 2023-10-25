@@ -10,7 +10,7 @@ import UIKit
 class SnifferViewController: UIViewController {
     
     private let gradient: CAGradientLayer = CAGradientLayer()
-    private var animatableLayer : CAShapeLayer = CAShapeLayer()
+    private let animatableLayer : CAShapeLayer = CAShapeLayer()
     
     private lazy var snifferButton: UIButton = {
         let button = UIButton()
@@ -28,6 +28,9 @@ class SnifferViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private let buttonRegularSize: CGFloat = 300
+    private let buttonCompactSize: CGFloat = 150
     
     private var compactConstraints: [NSLayoutConstraint] = []
     private var regularConstraints: [NSLayoutConstraint] = []
@@ -132,13 +135,13 @@ class SnifferViewController: UIViewController {
         ])
         
         regularConstraints.append(contentsOf: [
-            snifferButton.widthAnchor.constraint(equalToConstant: 300),
-            snifferButton.heightAnchor.constraint(equalToConstant: 300),
+            snifferButton.widthAnchor.constraint(equalToConstant: buttonRegularSize),
+            snifferButton.heightAnchor.constraint(equalToConstant: buttonRegularSize),
         ])
         
         compactConstraints.append(contentsOf: [
-            snifferButton.widthAnchor.constraint(equalToConstant: 150),
-            snifferButton.heightAnchor.constraint(equalToConstant: 150),
+            snifferButton.widthAnchor.constraint(equalToConstant: buttonCompactSize),
+            snifferButton.heightAnchor.constraint(equalToConstant: buttonCompactSize),
         ])
     }
     
@@ -148,11 +151,11 @@ class SnifferViewController: UIViewController {
                     regularConstraints: regularConstraints,
                     compactConstraints: compactConstraints,
             compactCallback: {
-                responsiveSnifferButton(cornerRadius: 75, imageSize: 75)
+                responsiveSnifferButton(cornerRadius: buttonCompactSize / 2, imageSize: buttonCompactSize / 2)
                 mainLabelFont(size: 25)
             },
             regularCallback: {
-                responsiveSnifferButton(cornerRadius: 150, imageSize: 150)
+                responsiveSnifferButton(cornerRadius: buttonRegularSize / 2, imageSize: buttonRegularSize / 2)
                 mainLabelFont(size: 40)
             }
         )
