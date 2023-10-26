@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90F23A5E27286E351CE36B46 /* Pods_Snound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19D5C1287F56FA9F10BE1B8 /* Pods_Snound.framework */; };
+		C97571A12AEA657000C2B9FF /* ShazamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97571A02AEA657000C2B9FF /* ShazamManager.swift */; };
 		C97A38DB2AD6957A00DCAD0C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A38DA2AD6957A00DCAD0C /* UIViewController+Extension.swift */; };
 		C97A38DD2AD6959800DCAD0C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A38DC2AD6959800DCAD0C /* UIImage+Extension.swift */; };
 		C9C4CBF82AD5C1E700FD7A33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4CBF72AD5C1E700FD7A33 /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 		369ACDBD490BC1DFA7439DE0 /* Pods-Snound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snound.debug.xcconfig"; path = "Target Support Files/Pods-Snound/Pods-Snound.debug.xcconfig"; sourceTree = "<group>"; };
 		86346184758FC004F2D5C411 /* Pods-Snound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snound.release.xcconfig"; path = "Target Support Files/Pods-Snound/Pods-Snound.release.xcconfig"; sourceTree = "<group>"; };
 		B19D5C1287F56FA9F10BE1B8 /* Pods_Snound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97571A02AEA657000C2B9FF /* ShazamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamManager.swift; sourceTree = "<group>"; };
 		C97A38DA2AD6957A00DCAD0C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		C97A38DC2AD6959800DCAD0C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C9C4CBF42AD5C1E700FD7A33 /* Snound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snound.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,14 @@
 				86346184758FC004F2D5C411 /* Pods-Snound.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C97571A22AEA6CEE00C2B9FF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C97571A02AEA657000C2B9FF /* ShazamManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		C9C4CBEB2AD5C1E700FD7A33 = {
@@ -112,6 +122,7 @@
 		C9C4CC112AD5DAE100FD7A33 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C97571A22AEA6CEE00C2B9FF /* Managers */,
 				C9C4CC122AD5DAE600FD7A33 /* Extensions */,
 			);
 			path = Utils;
@@ -265,6 +276,7 @@
 			files = (
 				C97A38DB2AD6957A00DCAD0C /* UIViewController+Extension.swift in Sources */,
 				C97A38DD2AD6959800DCAD0C /* UIImage+Extension.swift in Sources */,
+				C97571A12AEA657000C2B9FF /* ShazamManager.swift in Sources */,
 				C9C4CBFC2AD5C1E700FD7A33 /* SnifferViewController.swift in Sources */,
 				C9C4CBF82AD5C1E700FD7A33 /* AppDelegate.swift in Sources */,
 				C9C4CBFA2AD5C1E700FD7A33 /* SceneDelegate.swift in Sources */,
@@ -422,6 +434,7 @@
 				INFOPLIST_FILE = Snound/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Snound;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone to work.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -457,6 +470,7 @@
 				INFOPLIST_FILE = Snound/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Snound;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone to work.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

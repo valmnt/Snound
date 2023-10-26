@@ -10,7 +10,8 @@ import UIKit
 class SnifferViewController: UIViewController {
     
     private let gradient: CAGradientLayer = CAGradientLayer()
-    private let animatableLayer : CAShapeLayer = CAShapeLayer()
+    private let animatableLayer: CAShapeLayer = CAShapeLayer()
+    private let shazamManager: ShazamManager = ShazamManager()
     
     private lazy var snifferButton: UIButton = {
         let button = UIButton()
@@ -73,6 +74,7 @@ class SnifferViewController: UIViewController {
         if animatableLayer.isHidden {
             startSniffButtonAnimation()
             startRadioWaveAnimation()
+            try? shazamManager.match()
         } else {
             stopRadioWaveAnimation()
         }
