@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class SnifferViewController: UIViewController {
     
@@ -71,12 +72,13 @@ class SnifferViewController: UIViewController {
     }
     
     @objc func sniff() {
+        startSniffButtonAnimation()
         if animatableLayer.isHidden {
-            startSniffButtonAnimation()
             startRadioWaveAnimation()
             try? shazamManager.match()
         } else {
             stopRadioWaveAnimation()
+            shazamManager.stopListening()
         }
     }
     
@@ -118,8 +120,9 @@ class SnifferViewController: UIViewController {
     }
     
     private func startSniffButtonAnimation() {
-        UIView.animate(withDuration: 0.15, delay: 0.1, options: [], animations: {
+        UIView.animate(withDuration: 0.15, delay: 0.0, options: [], animations: {
             self.snifferButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+            AudioServicesPlayAlertSound(1519)
         }) { (finished) in
             self.snifferButton.transform = CGAffineTransform.identity
         }
