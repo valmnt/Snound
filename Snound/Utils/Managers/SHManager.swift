@@ -1,5 +1,5 @@
 //
-//  ShazamManager.swift
+//  SHManager.swift
 //  Snound
 //
 //  Created by Valentin Mont on 26/10/2023.
@@ -9,15 +9,15 @@ import AVFAudio
 import Foundation
 import ShazamKit
 
-class ShazamManager: NSObject {
+class SHManager: NSObject {
     
     private var session: SHSession?
     private let audioEngine = AVAudioEngine()
     
-    func match() throws {
+    func startListening(delegate: SHSessionDelegate) throws {
         session = SHSession()
         
-        session?.delegate = self
+        session?.delegate = delegate
         
         let audioFormat = AVAudioFormat(
             standardFormatWithSampleRate:
@@ -47,10 +47,4 @@ class ShazamManager: NSObject {
       audioEngine.stop()
       audioEngine.inputNode.removeTap(onBus: 0)
     }
-}
-
-extension ShazamManager: SHSessionDelegate {
-    func session(_ session: SHSession, didFind match: SHMatch) {}
-    
-    func session(_ session: SHSession, didNotFindMatchFor signature: SHSignature, error: Error?) {}
 }

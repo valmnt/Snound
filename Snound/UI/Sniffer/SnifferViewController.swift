@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import ShazamKit
 import AudioToolbox
 
 class SnifferViewController: UIViewController {
     
+    private let viewModel: SnifferViewModel = SnifferViewModel()
     private let gradient: CAGradientLayer = CAGradientLayer()
     private let animatableLayer: CAShapeLayer = CAShapeLayer()
-    private let shazamManager: ShazamManager = ShazamManager()
     
     private lazy var snifferButton: UIButton = {
         let button = UIButton()
@@ -73,13 +74,17 @@ class SnifferViewController: UIViewController {
     
     @objc func sniff() {
         startSniffButtonAnimation()
-        if animatableLayer.isHidden {
-            startRadioWaveAnimation()
-            try? shazamManager.match()
-        } else {
-            stopRadioWaveAnimation()
-            shazamManager.stopListening()
-        }
+        animatableLayer.isHidden ? startSniffing() : stopSniffing()
+    }
+    
+    private func startSniffing() {
+        startRadioWaveAnimation()
+        try? viewModel.shazamManager.startListening(delegate: self)
+    }
+    
+    private func stopSniffing() {
+        stopRadioWaveAnimation()
+        viewModel.shazamManager.stopListening()
     }
     
     private func radioWaveAnimation() {
@@ -173,5 +178,18 @@ class SnifferViewController: UIViewController {
     
     private func mainLabelFont(size: CGFloat) {
         mainLabel.font = .boldSystemFont(ofSize: size)
+    }
+}
+
+extension SnifferViewController: SHSessionDelegate {
+    func session(_ session: SHSession, didFind match: SHMatch) {
+        print(match.mediaItems.first)
+        DispatchQueue.main.async { [weak self] in
+            self?.stopSniffing()
+        }
+    }
+    
+    func session(_ session: SHSession, didNotFindMatchFor signature: SHSignature, error: Error?) {
+        print(error)
     }
 }
