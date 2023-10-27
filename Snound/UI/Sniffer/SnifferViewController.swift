@@ -88,7 +88,7 @@ class SnifferViewController: UIViewController {
     }
     
     private func radioWaveAnimation() {
-        animatableLayer.fillColor = UIColor(resource: R.color.primary)?.cgColor
+        animatableLayer.fillColor = UIColor(resource: R.color.primary)?.withAlphaComponent(0.4).cgColor
         animatableLayer.path = UIBezierPath(roundedRect: snifferButton.bounds, cornerRadius: snifferButton.layer.cornerRadius).cgPath
         animatableLayer.frame = snifferButton.bounds
         animatableLayer.position = snifferButton.center
