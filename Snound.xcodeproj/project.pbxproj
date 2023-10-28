@@ -73,6 +73,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C9428F1F2AED14D500EB1510 /* SHMusic */ = {
+			isa = PBXGroup;
+			children = (
+				C9428F1D2AED10F600EB1510 /* SHMusicViewController.swift */,
+			);
+			path = SHMusic;
+			sourceTree = "<group>";
+		};
 		C97571A22AEA6CEE00C2B9FF /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,8 +135,8 @@
 		C9C4CC0B2AD5C52F00FD7A33 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C9428F1F2AED14D500EB1510 /* SHMusic */,
 				C9BF00752AEC07950030BE9E /* Sniffer */,
-				C9428F1D2AED10F600EB1510 /* SHMusicViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";

@@ -6,11 +6,15 @@
 //
 
 import Foundation
+import ShazamKit
 import UIKit
 
 class SHMusicViewController: UIViewController {
     
+    var shMusic: SHMatchedMediaItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(shMusic)
     }
 }

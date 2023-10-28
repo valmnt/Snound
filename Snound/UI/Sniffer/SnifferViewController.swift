@@ -186,6 +186,7 @@ extension SnifferViewController: SHSessionDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.stopSniffing()
             if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) as? SHMusicViewController {
+                viewController.shMusic = match.mediaItems.first
                 self?.navigationController?.present(viewController, animated: true)
             }
         }
