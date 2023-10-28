@@ -183,13 +183,15 @@ class SnifferViewController: UIViewController {
 
 extension SnifferViewController: SHSessionDelegate {
     func session(_ session: SHSession, didFind match: SHMatch) {
-        print(match.mediaItems.first)
         DispatchQueue.main.async { [weak self] in
             self?.stopSniffing()
+            if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) as? SHMusicViewController {
+                self?.navigationController?.present(viewController, animated: true)
+            }
         }
     }
     
     func session(_ session: SHSession, didNotFindMatchFor signature: SHSignature, error: Error?) {
-        print(error)
+        // TODO: Handle SH errors
     }
 }

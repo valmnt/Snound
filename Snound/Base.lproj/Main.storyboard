@@ -12,7 +12,7 @@
         <!--Sniffer View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SnifferViewController" customModule="Snound" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SnifferViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SnifferViewController" customModule="Snound" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,6 +24,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1167" y="156"/>
+        </scene>
+        <!--Music View Controller-->
+        <scene sceneID="HzX-w8-2kO">
+            <objects>
+                <viewController storyboardIdentifier="SHMusicViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ava-Mm-hZd" customClass="SHMusicViewController" customModule="Snound" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WeP-oL-f0W">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="OJc-wE-1My"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hpZ-Ex-q5Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2066" y="156"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fws-wW-ah1">
