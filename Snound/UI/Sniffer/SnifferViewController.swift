@@ -26,7 +26,7 @@ class SnifferViewController: SNViewController {
     private lazy var mainLabel: UILabel = {
         let label = UILabel()
         label.text = "Tap to recognize"
-        label.textColor = .white
+        label.textColor = UIColor(resource: R.color.primary)
         label.font = .boldSystemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -50,7 +50,6 @@ class SnifferViewController: SNViewController {
             self.mainLabelFont(size: 40)
         }
         
-        view.backgroundColor = .gray
         view.setGradientBackground(gradient: gradient,colors: [
             UIColor(resource: R.color.background)!.withAlphaComponent(0.4).cgColor,
             UIColor(resource: R.color.background)!.withAlphaComponent(0.5).cgColor,
@@ -175,7 +174,16 @@ extension SnifferViewController: SHSessionDelegate {
             self?.stopSniffing()
             if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) as? SHMusicViewController {
                 viewController.shMusic = match.mediaItems.first
-                self?.navigationController?.present(viewController, animated: true)
+                Task {
+                    guard let artworkURL = viewController.shMusic?.artworkURL,
+                          let data = await viewController.viewModel.getRemoteImage(url: artworkURL) else {
+                        return
+                    }
+                    viewController.shMusicImage = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        self?.navigationController?.present(viewController, animated: true)
+                    }
+                }
             }
         }
     }
