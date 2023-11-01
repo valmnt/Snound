@@ -13,8 +13,17 @@ class SHMusicViewController: UIViewController {
     
     var shMusic: SHMatchedMediaItem?
     
+    private lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(shMusic)
+//        if let artworkURL = shMusic?.artworkURL, let data = try? Data(contentsOf: artworkURL) {
+//            imageView.image = UIImage(data: data)
+//            view.addSubview(imageView)
+//        }
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 import ShazamKit
 import AudioToolbox
 
-class SnifferViewController: UIViewController {
+class SnifferViewController: SNViewController {
     
     private let viewModel: SnifferViewModel = SnifferViewModel()
     private let gradient: CAGradientLayer = CAGradientLayer()
@@ -34,13 +34,22 @@ class SnifferViewController: UIViewController {
     
     private let buttonRegularSize: CGFloat = 300
     private let buttonCompactSize: CGFloat = 150
-    
-    private var compactConstraints: [NSLayoutConstraint] = []
-    private var regularConstraints: [NSLayoutConstraint] = []
-    private var sharedConstraints: [NSLayoutConstraint] = []
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        compactCallback = { [weak self] in
+            guard let self = self else { return }
+            self.responsiveSnifferButton(cornerRadius: self.buttonCompactSize / 2,
+                                         imageSize: self.buttonCompactSize / 2)
+            self.mainLabelFont(size: 25)
+        }
+        
+        regularCallback = { [weak self] in
+            guard let self = self else { return }
+            self.responsiveSnifferButton(cornerRadius: self.buttonRegularSize / 2,
+                                         imageSize: self.buttonRegularSize / 2)
+            self.mainLabelFont(size: 40)
+        }
+        
         view.backgroundColor = .gray
         view.setGradientBackground(gradient: gradient,colors: [
             UIColor(resource: R.color.background)!.withAlphaComponent(0.4).cgColor,
@@ -50,7 +59,7 @@ class SnifferViewController: UIViewController {
         view.addSubview(snifferButton)
         view.addSubview(mainLabel)
         setupConstraints()
-        layoutTrait()
+        super.viewDidLoad()
     }
     
     override func viewWillTransition(to size: CGSize,
@@ -65,11 +74,6 @@ class SnifferViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         radioWaveAnimation()
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        layoutTrait()
     }
     
     @objc func sniff() {
@@ -153,22 +157,6 @@ class SnifferViewController: UIViewController {
             snifferButton.widthAnchor.constraint(equalToConstant: buttonCompactSize),
             snifferButton.heightAnchor.constraint(equalToConstant: buttonCompactSize),
         ])
-    }
-    
-    private func layoutTrait() {
-        layoutTrait(traitCollection: traitCollection,
-                    sharedConstraints: sharedConstraints,
-                    regularConstraints: regularConstraints,
-                    compactConstraints: compactConstraints,
-            compactCallback: {
-                responsiveSnifferButton(cornerRadius: buttonCompactSize / 2, imageSize: buttonCompactSize / 2)
-                mainLabelFont(size: 25)
-            },
-            regularCallback: {
-                responsiveSnifferButton(cornerRadius: buttonRegularSize / 2, imageSize: buttonRegularSize / 2)
-                mainLabelFont(size: 40)
-            }
-        )
     }
     
     private func responsiveSnifferButton(cornerRadius: CGFloat, imageSize: CGFloat) {
