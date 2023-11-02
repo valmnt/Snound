@@ -104,8 +104,8 @@
 		C97615C92AF2527E00E03682 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C97615CA2AF252CE00E03682 /* SNViewController.swift */,
-				C9B70A4B2AF40996001B96BA /* SNViewModel.swift */,
+				C9B70A502AF40F9F001B96BA /* Shared */,
+				C9B70A4F2AF40F89001B96BA /* SQLite */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -124,6 +124,23 @@
 				C9A8E6EC2AF3BB4500B8D695 /* Sniffer.strings */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		C9B70A4F2AF40F89001B96BA /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				C9B70A4D2AF40C99001B96BA /* Music.swift */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
+		C9B70A502AF40F9F001B96BA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C97615CA2AF252CE00E03682 /* SNViewController.swift */,
+				C9B70A4B2AF40996001B96BA /* SNViewModel.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		C9BF00752AEC07950030BE9E /* Sniffer */ = {
@@ -160,7 +177,6 @@
 				C97615C92AF2527E00E03682 /* Core */,
 				C9C4CC112AD5DAE100FD7A33 /* Utils */,
 				C9C4CC0B2AD5C52F00FD7A33 /* UI */,
-				C9B70A4D2AF40C99001B96BA /* Music.swift */,
 				C9C4CBF72AD5C1E700FD7A33 /* AppDelegate.swift */,
 				C9C4CBF92AD5C1E700FD7A33 /* SceneDelegate.swift */,
 				C9C4CBFD2AD5C1E700FD7A33 /* Main.storyboard */,
