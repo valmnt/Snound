@@ -39,7 +39,7 @@ class SHMusicViewController: SNViewController {
         return label
     }()
     
-    private lazy var coverLabel: UILabel = {
+    private lazy var artistLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(resource: R.color.primary)?.withAlphaComponent(0.4)
         label.font = .boldSystemFont(ofSize: 22)
@@ -50,9 +50,26 @@ class SHMusicViewController: SNViewController {
     
     private let upwardsBlurEdge = UpwardsBlurEdge()
     
+    private lazy var appleMusicButton: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(systemName: "airpodsmax")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        configuration.imagePadding = 10
+        configuration.background.backgroundColor = UIColor(resource: R.color.appleMusic)
+        configuration.cornerStyle = .capsule
+        
+        var container = AttributeContainer()
+        container.font = .boldSystemFont(ofSize: 18)
+        configuration.attributedTitle = AttributedString("Full song", attributes: container)
+        
+        let button = UIButton(configuration: configuration)
+        button.addTarget(self, action: #selector(redirectToAppleMusic), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         guard let shMusicImage = shMusicImage else { return }
-
+        
         blurEffectView.backgroundColor = UIColor(patternImage: shMusicImage)
         
         imageView.image = shMusicImage
@@ -62,19 +79,20 @@ class SHMusicViewController: SNViewController {
         upwardsBlurEdge.backgroundColor = UIColor(resource: R.color.background)
         
         songLabel.text = shMusic?.title
-        coverLabel.text = shMusic?.artist
-       
+        artistLabel.text = shMusic?.artist
+        
         view.addSubview(blurEffectView)
         view.addSubview(imageView)
         view.addSubview(upwardsBlurEdge)
         view.addSubview(songLabel)
-        view.addSubview(coverLabel)
+        view.addSubview(artistLabel)
+        view.addSubview(appleMusicButton)
         
         setupConstraints()
         super.viewDidLoad()
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         sharedConstraints.append(contentsOf: [
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             imageView.heightAnchor.constraint(equalTo: blurEffectView.heightAnchor, constant: -40),
@@ -83,6 +101,11 @@ class SHMusicViewController: SNViewController {
             
             upwardsBlurEdge.widthAnchor.constraint(equalTo: view.widthAnchor),
             upwardsBlurEdge.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            appleMusicButton.topAnchor.constraint(equalTo: artistLabel.bottomAnchor, constant: 50),
+            appleMusicButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            appleMusicButton.widthAnchor.constraint(equalToConstant: 200),
+            appleMusicButton.heightAnchor.constraint(equalToConstant: 55),
         ])
         
         compactConstraints.append(contentsOf: [
@@ -91,8 +114,8 @@ class SHMusicViewController: SNViewController {
             songLabel.topAnchor.constraint(equalTo: blurEffectView.bottomAnchor, constant: -40),
             songLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
-            coverLabel.topAnchor.constraint(equalTo: songLabel.bottomAnchor, constant: 10),
-            coverLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            artistLabel.topAnchor.constraint(equalTo: songLabel.bottomAnchor, constant: 10),
+            artistLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
         
         regularConstraints.append(contentsOf: [
@@ -101,8 +124,13 @@ class SHMusicViewController: SNViewController {
             songLabel.topAnchor.constraint(equalTo: blurEffectView.bottomAnchor, constant: 10),
             songLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             
-            coverLabel.topAnchor.constraint(equalTo: songLabel.bottomAnchor, constant: 10),
-            coverLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            artistLabel.topAnchor.constraint(equalTo: songLabel.bottomAnchor, constant: 10),
+            artistLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
         ])
+    }
+    
+    @objc private func redirectToAppleMusic() {
+        guard let appleMusicURL = shMusic?.appleMusicURL else { return }
+        UIApplication.shared.open(appleMusicURL )
     }
 }
