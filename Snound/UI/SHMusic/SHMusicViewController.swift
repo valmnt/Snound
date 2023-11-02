@@ -34,7 +34,7 @@ class SHMusicViewController: SNViewController {
         let label = UILabel()
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 27)
-        label.numberOfLines = 1
+        label.numberOfLines = 3
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -43,7 +43,7 @@ class SHMusicViewController: SNViewController {
         let label = UILabel()
         label.textColor = UIColor(resource: R.color.primary)?.withAlphaComponent(0.4)
         label.font = .boldSystemFont(ofSize: 22)
-        label.numberOfLines = 1
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -131,9 +131,11 @@ class SHMusicViewController: SNViewController {
             
             songLabel.topAnchor.constraint(equalTo: blurEffectView.bottomAnchor, constant: -40),
             songLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            songLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             artistLabel.topAnchor.constraint(equalTo: songLabel.bottomAnchor, constant: 10),
             artistLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            artistLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
         
         regularConstraints.append(contentsOf: [
@@ -141,9 +143,11 @@ class SHMusicViewController: SNViewController {
             
             songLabel.topAnchor.constraint(equalTo: blurEffectView.bottomAnchor, constant: 10),
             songLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            songLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             
             artistLabel.topAnchor.constraint(equalTo: songLabel.bottomAnchor, constant: 10),
             artistLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            artistLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
         ])
     }
     
