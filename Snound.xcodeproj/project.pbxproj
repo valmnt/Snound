@@ -158,9 +158,9 @@
 				C9C4CBF72AD5C1E700FD7A33 /* AppDelegate.swift */,
 				C9C4CBF92AD5C1E700FD7A33 /* SceneDelegate.swift */,
 				C9C4CBFD2AD5C1E700FD7A33 /* Main.storyboard */,
+				C9C4CC022AD5C1E700FD7A33 /* LaunchScreen.storyboard */,
 				C9C4CC0D2AD5CEC200FD7A33 /* R.generated.swift */,
 				C9C4CC002AD5C1E700FD7A33 /* Assets.xcassets */,
-				C9C4CC022AD5C1E700FD7A33 /* LaunchScreen.storyboard */,
 				C9C4CC052AD5C1E700FD7A33 /* Info.plist */,
 			);
 			path = Snound;
