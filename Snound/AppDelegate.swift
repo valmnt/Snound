@@ -11,20 +11,25 @@ import SQLite
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    private(set) var databaseSQL: Connection?
+    private(set) var databaseSQLite: Connection?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        initSQL()
+        initSQLite()
         return true
     }
     
-    private func initSQL() {
+    private func initSQLite() {
         do {
             let path = NSSearchPathForDirectoriesInDomains(
                 .documentDirectory, .userDomainMask, true
             ).first!
             
-            databaseSQL = try Connection("\(path)/db.sqlite3")
+            databaseSQLite = try Connection("\(path)/db.sqlite3")
+            
+            try databaseSQLite?.run(Table("musics").create(ifNotExists: true, block: { t in
+                t.column(Expression<Int64>("id"), primaryKey: true)
+                t.column(Expression<String?>("title"))
+            }))
         } catch {
             print(error)
         }

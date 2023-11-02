@@ -11,8 +11,8 @@ import UIKit
 
 class SNViewController: UIViewController {
     
-    var dbSQL: Connection? {
-        (UIApplication.shared.delegate as? AppDelegate)?.databaseSQL
+    var dbSQLite: Connection? {
+        (UIApplication.shared.delegate as? AppDelegate)?.databaseSQLite
     }
     
     var compactConstraints: [NSLayoutConstraint] = []
