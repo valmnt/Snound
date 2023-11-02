@@ -30,7 +30,7 @@ class SnifferViewController: SNViewController {
     
     private lazy var mainLabel: UILabel = {
         let label = UILabel()
-        label.text = "Tap to recognize"
+        label.text = R.string.sniffer.tapToRecognize.callAsFunction()
         label.textColor = UIColor(resource: R.color.primary)
         label.font = .boldSystemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
