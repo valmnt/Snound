@@ -67,6 +67,18 @@ class SHMusicViewController: SNViewController {
         return button
     }()
     
+    private lazy var topBar: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         guard let shMusicImage = shMusicImage else { return }
         
@@ -87,6 +99,7 @@ class SHMusicViewController: SNViewController {
         view.addSubview(songLabel)
         view.addSubview(artistLabel)
         view.addSubview(appleMusicButton)
+        view.addSubview(topBar)
         
         setupConstraints()
         super.viewDidLoad()
@@ -106,6 +119,11 @@ class SHMusicViewController: SNViewController {
             appleMusicButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             appleMusicButton.widthAnchor.constraint(equalToConstant: 200),
             appleMusicButton.heightAnchor.constraint(equalToConstant: 55),
+            
+            topBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            topBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            topBar.widthAnchor.constraint(equalToConstant: 100),
+            topBar.heightAnchor.constraint(equalToConstant: 10),
         ])
         
         compactConstraints.append(contentsOf: [
