@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import SQLite
 import UIKit
 
 class SNViewController: UIViewController {
+    
+    var dbSQL: Connection? {
+        (UIApplication.shared.delegate as? AppDelegate)?.databaseSQL
+    }
     
     var compactConstraints: [NSLayoutConstraint] = []
     var regularConstraints: [NSLayoutConstraint] = []

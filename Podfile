@@ -7,4 +7,5 @@ target 'Snound' do
 
   # Pods for Snound
   pod 'R.swift'
+  pod 'SQLite.swift', '~> 0.14.0'
 end
