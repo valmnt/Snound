@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import ShazamKit
+import SQLite
 
-class SHMusicViewModel {
+class SHMusicViewModel: SNViewModel {
     
     func getRemoteImage(url: URL) async -> Data? {
         do {
@@ -16,6 +18,15 @@ class SHMusicViewModel {
         } catch {
             print(error)
             return nil
+        }
+    }
+    
+    func insertIntoDatabase(_ item: SHMatchedMediaItem) {
+        do {
+            guard let title = item.title else { fatalError("Empty title") }
+            try dbSQLite?.run(Music.table.insert(Music.title <- title))
+        } catch {
+            print(error)
         }
     }
 }

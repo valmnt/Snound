@@ -7,6 +7,6 @@
 
 import Foundation
 
-class SnifferViewModel {
+class SnifferViewModel: SNViewModel {
     let shazamManager: SHManager = SHManager()
 }

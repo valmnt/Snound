@@ -26,9 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             databaseSQLite = try Connection("\(path)/db.sqlite3")
             
-            try databaseSQLite?.run(Table("musics").create(ifNotExists: true, block: { t in
-                t.column(Expression<Int64>("id"), primaryKey: true)
-                t.column(Expression<String?>("title"))
+            try databaseSQLite?.run(Music.table.create(ifNotExists: true, block: { t in
+                t.column(Music.title, unique: true)
             }))
         } catch {
             print(error)

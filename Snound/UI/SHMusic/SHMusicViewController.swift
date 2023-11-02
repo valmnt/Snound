@@ -80,7 +80,9 @@ class SHMusicViewController: SNViewController {
     }()
     
     override func viewDidLoad() {
-        guard let shMusicImage = shMusicImage else { return }
+        guard let shMusic = shMusic, let shMusicImage = shMusicImage else { return }
+        
+        viewModel.insertIntoDatabase(shMusic)
         
         blurEffectView.backgroundColor = UIColor(patternImage: shMusicImage)
         
@@ -90,8 +92,8 @@ class SHMusicViewController: SNViewController {
         upwardsBlurEdge.translatesAutoresizingMaskIntoConstraints = false
         upwardsBlurEdge.backgroundColor = UIColor(resource: R.color.background)
         
-        songLabel.text = shMusic?.title
-        artistLabel.text = shMusic?.artist
+        songLabel.text = shMusic.title
+        artistLabel.text = shMusic.artist
         
         view.addSubview(blurEffectView)
         view.addSubview(imageView)
