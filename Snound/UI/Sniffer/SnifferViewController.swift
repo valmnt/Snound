@@ -19,6 +19,11 @@ class SnifferViewController: SNViewController {
         let button = UIButton()
         button.backgroundColor = .white.withAlphaComponent(0.4)
         button.addTarget(self, action: #selector(sniff), for: .touchUpInside)
+        button.layer.cornerRadius = 5
+        button.layer.shadowColor = UIColor.white.cgColor
+        button.layer.shadowOpacity = 1
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 50
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
