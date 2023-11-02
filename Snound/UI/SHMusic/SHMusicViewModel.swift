@@ -16,7 +16,7 @@ class SHMusicViewModel: SNViewModel {
             let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
             return data
         } catch {
-            print(error)
+            NSLog("[URLSession] An error occurred while retrieving the song art.", error.localizedDescription)
             return nil
         }
     }
@@ -26,7 +26,7 @@ class SHMusicViewModel: SNViewModel {
             guard let title = item.title else { fatalError("Empty title") }
             try dbSQLite?.run(Music.table.insert(Music.title <- title))
         } catch {
-            print(error)
+            NSLog("[SQLite] An error occured while inserting a music into the database.", error.localizedDescription)
         }
     }
 }

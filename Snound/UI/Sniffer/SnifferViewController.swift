@@ -180,6 +180,7 @@ extension SnifferViewController: SHSessionDelegate {
             if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) as? SHMusicViewController {
                 viewController.shMusic = match.mediaItems.first
                 Task {
+                    // TODO: Handle URLSession errors
                     guard let artworkURL = viewController.shMusic?.artworkURL,
                           let data = await viewController.viewModel.getRemoteImage(url: artworkURL) else {
                         return

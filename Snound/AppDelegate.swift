@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 t.column(Music.title, unique: true)
             }))
         } catch {
-            print(error)
+            NSLog("[SQLite] An error occured while initializing the database.", error.localizedDescription)
         }
     }
 }
