@@ -81,7 +81,7 @@ class SHMusicViewController: SNViewController {
     
     override func viewDidLoad() {
         guard let shMusic = shMusic, let shMusicImage = shMusicImage else { return }
-        
+
         viewModel.insertIntoDatabase(shMusic)
         
         blurEffectView.backgroundColor = UIColor(patternImage: shMusicImage)

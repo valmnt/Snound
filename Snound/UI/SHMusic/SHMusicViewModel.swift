@@ -23,8 +23,19 @@ class SHMusicViewModel: SNViewModel {
     
     func insertIntoDatabase(_ item: SHMatchedMediaItem) {
         do {
-            guard let title = item.title else { fatalError("Empty title") }
-            try dbSQLite?.run(Music.table.insert(Music.title <- title))
+            guard let title = item.title,
+                  let artist = item.artist,
+                  let artworkURL = item.artworkURL,
+                  let appleMusicURL = item.appleMusicURL else {
+                 fatalError("Empty title")
+             }
+            
+            try dbSQLite?.run(Music.table.insert(
+                Music.title <- title,
+                Music.artist <- artist,
+                Music.artworkURL <- artworkURL,
+                Music.appleMusicURL <- appleMusicURL
+            ))
         } catch {
             NSLog("[SQLite] An error occured while inserting a music into the database.", error.localizedDescription)
         }
