@@ -10,3 +10,6 @@
 
 "imageLoadingErrorTitle" = "Oops...";
 "imageLoadingErrorMessage" = "An error occurred while retrieving the information.";
+
+"didNotFindMatchTitle" = "Oops...";
+"didNotFindMatchMessage" = "We were unable to identify the music. Please try again.";

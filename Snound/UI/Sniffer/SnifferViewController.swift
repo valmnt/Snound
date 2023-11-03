@@ -189,20 +189,25 @@ extension SnifferViewController: SHSessionDelegate {
                             self?.navigationController?.present(viewController, animated: true)
                         }
                     } catch {
-                        self?.displayAlert()
+                        self?.displayAlert(title: R.string.sniffer.imageLoadingErrorTitle.callAsFunction(),
+                                           message: R.string.sniffer.imageLoadingErrorMessage.callAsFunction())
                     }
                 }
             }
         }
     }
     
-    private func displayAlert() {
-        let alert = UIAlertController(title: R.string.sniffer.imageLoadingErrorTitle.callAsFunction(), message: R.string.sniffer.imageLoadingErrorMessage.callAsFunction(), preferredStyle: .alert)
+    private func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     func session(_ session: SHSession, didNotFindMatchFor signature: SHSignature, error: Error?) {
-        // TODO: Handle SH errors
+        DispatchQueue.main.async { [weak self] in
+            self?.stopSniffing()
+            self?.displayAlert(title: R.string.sniffer.didNotFindMatchTitle.callAsFunction(),
+                         message: R.string.sniffer.didNotFindMatchMessage.callAsFunction())
+        }
     }
 }
