@@ -59,7 +59,7 @@ class SHMusicViewController: SNViewController {
         
         var container = AttributeContainer()
         container.font = .boldSystemFont(ofSize: 18)
-        configuration.attributedTitle = AttributedString("Apple Music", attributes: container)
+        configuration.attributedTitle = AttributedString(R.string.general.appleMusic.callAsFunction(), attributes: container)
         
         let button = UIButton(configuration: configuration)
         button.addTarget(self, action: #selector(redirectToAppleMusic), for: .touchUpInside)
