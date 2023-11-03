@@ -28,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             try databaseSQLite?.run(Music.table.create(ifNotExists: true, block: { t in
                 t.column(Music.title, unique: true)
+                t.column(Music.artist)
+                t.column(Music.artworkURL)
+                t.column(Music.appleMusicURL)
             }))
         } catch {
             NSLog("[SQLite] An error occured while initializing the database.", error.localizedDescription)

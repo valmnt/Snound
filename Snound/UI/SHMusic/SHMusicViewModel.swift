@@ -27,7 +27,7 @@ class SHMusicViewModel: SNViewModel {
                   let artist = item.artist,
                   let artworkURL = item.artworkURL,
                   let appleMusicURL = item.appleMusicURL else {
-                 fatalError("Empty title")
+                 return
              }
             
             try dbSQLite?.run(Music.table.insert(
