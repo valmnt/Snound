@@ -11,13 +11,13 @@ import SQLite
 
 class SHMusicViewModel: SNViewModel {
     
-    func getRemoteImage(url: URL) async -> Data? {
+    func getRemoteImage(url: URL) async -> Swift.Result<Data, Error> {
         do {
             let (data, _) = try await URLSession.shared.data(for: URLRequest(url: url))
-            return data
+            return .success(data)
         } catch {
             NSLog("[URLSession] An error occurred while retrieving the song art.", error.localizedDescription)
-            return nil
+            return .failure(error)
         }
     }
     

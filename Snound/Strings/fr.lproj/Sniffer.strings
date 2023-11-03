@@ -7,3 +7,6 @@
 */
 
 "tapToRecognize" = "Appuyez pour identifier";
+
+"imageLoadingErrorTitle" = "Oops...";
+"imageLoadingErrorMessage" = "Une erreur est apparue lors de la récupération des informations.";

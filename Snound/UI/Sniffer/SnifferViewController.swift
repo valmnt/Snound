@@ -180,18 +180,26 @@ extension SnifferViewController: SHSessionDelegate {
             if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) as? SHMusicViewController {
                 viewController.shMusic = match.mediaItems.first
                 Task {
-                    // TODO: Handle URLSession errors
-                    guard let artworkURL = viewController.shMusic?.artworkURL,
-                          let data = await viewController.viewModel.getRemoteImage(url: artworkURL) else {
-                        return
-                    }
-                    viewController.shMusicImage = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        self?.navigationController?.present(viewController, animated: true)
+                    guard let artworkURL = viewController.shMusic?.artworkURL else { return }
+                    
+                    do {
+                        let data = try await viewController.viewModel.getRemoteImage(url: artworkURL).get()
+                        viewController.shMusicImage = UIImage(data: data)
+                        DispatchQueue.main.async {
+                            self?.navigationController?.present(viewController, animated: true)
+                        }
+                    } catch {
+                        self?.displayAlert()
                     }
                 }
             }
         }
+    }
+    
+    private func displayAlert() {
+        let alert = UIAlertController(title: R.string.sniffer.imageLoadingErrorTitle.callAsFunction(), message: R.string.sniffer.imageLoadingErrorMessage.callAsFunction(), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func session(_ session: SHSession, didNotFindMatchFor signature: SHSignature, error: Error?) {
