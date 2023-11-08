@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90F23A5E27286E351CE36B46 /* Pods_Snound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19D5C1287F56FA9F10BE1B8 /* Pods_Snound.framework */; };
+		C900743F2AFBF3B800C20AF8 /* SHMusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C900743E2AFBF3B800C20AF8 /* SHMusicListViewController.swift */; };
 		C92535772AF520960005221B /* General.strings in Resources */ = {isa = PBXBuildFile; fileRef = C92535792AF520960005221B /* General.strings */; };
 		C9428F1E2AED10F600EB1510 /* SHMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9428F1D2AED10F600EB1510 /* SHMusicViewController.swift */; };
 		C97571A12AEA657000C2B9FF /* SHManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97571A02AEA657000C2B9FF /* SHManager.swift */; };
@@ -33,6 +34,7 @@
 		369ACDBD490BC1DFA7439DE0 /* Pods-Snound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snound.debug.xcconfig"; path = "Target Support Files/Pods-Snound/Pods-Snound.debug.xcconfig"; sourceTree = "<group>"; };
 		86346184758FC004F2D5C411 /* Pods-Snound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snound.release.xcconfig"; path = "Target Support Files/Pods-Snound/Pods-Snound.release.xcconfig"; sourceTree = "<group>"; };
 		B19D5C1287F56FA9F10BE1B8 /* Pods_Snound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C900743E2AFBF3B800C20AF8 /* SHMusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMusicListViewController.swift; sourceTree = "<group>"; };
 		C92535782AF520960005221B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/General.strings; sourceTree = "<group>"; };
 		C925357A2AF520990005221B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/General.strings; sourceTree = "<group>"; };
 		C9428F1D2AED10F600EB1510 /* SHMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMusicViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 				86346184758FC004F2D5C411 /* Pods-Snound.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C900743D2AFBF37A00C20AF8 /* SHMusicList */ = {
+			isa = PBXGroup;
+			children = (
+				C900743E2AFBF3B800C20AF8 /* SHMusicListViewController.swift */,
+			);
+			path = SHMusicList;
 			sourceTree = "<group>";
 		};
 		C9428F1F2AED14D500EB1510 /* SHMusic */ = {
@@ -195,6 +205,7 @@
 		C9C4CC0B2AD5C52F00FD7A33 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C900743D2AFBF37A00C20AF8 /* SHMusicList */,
 				C9428F1F2AED14D500EB1510 /* SHMusic */,
 				C9BF00752AEC07950030BE9E /* Sniffer */,
 			);
@@ -361,6 +372,7 @@
 			files = (
 				C97A38DD2AD6959800DCAD0C /* UIImage+Extension.swift in Sources */,
 				C97571A12AEA657000C2B9FF /* SHManager.swift in Sources */,
+				C900743F2AFBF3B800C20AF8 /* SHMusicListViewController.swift in Sources */,
 				C97615CB2AF252CE00E03682 /* SNViewController.swift in Sources */,
 				C9C4CBFC2AD5C1E700FD7A33 /* SnifferViewController.swift in Sources */,
 				C9B70A4C2AF40996001B96BA /* SNViewModel.swift in Sources */,

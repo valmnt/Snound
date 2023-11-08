@@ -64,6 +64,7 @@ class SnifferViewController: SNViewController {
         view.addSubview(mainLabel)
         setupConstraints()
         super.viewDidLoad()
+        configureMusicListSheet()
     }
     
     override func viewWillTransition(to size: CGSize,
@@ -170,6 +171,18 @@ class SnifferViewController: SNViewController {
     
     private func mainLabelFont(size: CGFloat) {
         mainLabel.font = .boldSystemFont(ofSize: size)
+    }
+    
+    private func configureMusicListSheet() {
+        let viewController = SHMusicListViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.isModalInPresentation = true
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [.custom(resolver: { context in
+                0.15 * context.maximumDetentValue
+            }), .large()]
+            self.navigationController?.present(navigationController, animated: true)
+        }
     }
 }
 

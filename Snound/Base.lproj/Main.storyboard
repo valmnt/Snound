@@ -38,7 +38,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpZ-Ex-q5Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2066" y="156"/>
+            <point key="canvasLocation" x="2024" y="-178"/>
+        </scene>
+        <!--Music List View Controller-->
+        <scene sceneID="dnL-57-q0m">
+            <objects>
+                <viewController id="L9W-3K-obj" customClass="SHMusicListViewController" customModule="Snound" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2mB-61-is9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eoP-jz-O2w"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufx-ht-hg1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2024" y="490"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fws-wW-ah1">
