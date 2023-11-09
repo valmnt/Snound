@@ -30,7 +30,7 @@ class SHMusicListViewController: SNViewController {
     
     private lazy var yourMusicLabel: UILabel = {
         let label = UILabel()
-        label.text = "Your Music"
+        label.text = R.string.musicList.yourMusic.callAsFunction()
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 27)
         label.translatesAutoresizingMaskIntoConstraints = false
