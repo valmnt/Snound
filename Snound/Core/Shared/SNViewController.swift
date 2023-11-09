@@ -17,9 +17,13 @@ class SNViewController: UIViewController {
     var compactCallback: (() -> Void)?
     var regularCallback: (() -> Void)?
     
+    var backgroundColor: UIColor? {
+        UIColor(resource: R.color.background)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(resource: R.color.background)
+        view.backgroundColor = backgroundColor
         layoutTrait(traitCollection: traitCollection,
                     sharedConstraints: sharedConstraints,
                     regularConstraints: regularConstraints,

@@ -128,7 +128,7 @@ class SHMusicViewController: SNViewController {
             appleMusicButton.widthAnchor.constraint(equalToConstant: 200),
             appleMusicButton.heightAnchor.constraint(equalToConstant: 55),
             
-            topBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            topBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
             topBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             topBar.widthAnchor.constraint(equalToConstant: 100),
             topBar.heightAnchor.constraint(equalToConstant: 10),
