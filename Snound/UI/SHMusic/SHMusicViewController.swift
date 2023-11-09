@@ -15,6 +15,7 @@ class SHMusicViewController: SNViewController {
     
     var shMusicImage: UIImage?
     var shMusic: SHMatchedMediaItem?
+    var snifferDelegate: SnifferDelegate?
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -82,7 +83,7 @@ class SHMusicViewController: SNViewController {
     override func viewDidLoad() {
         guard let shMusic = shMusic, let shMusicImage = shMusicImage else { return }
 
-        viewModel.insertIntoDatabase(shMusic)
+        viewModel.insertIntoDatabase(item: shMusic, image: shMusicImage)
         
         blurEffectView.backgroundColor = UIColor(patternImage: shMusicImage)
         
@@ -105,6 +106,11 @@ class SHMusicViewController: SNViewController {
         
         setupConstraints()
         super.viewDidLoad()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        snifferDelegate?.displayBottomSheet()
     }
     
     private func setupConstraints() {

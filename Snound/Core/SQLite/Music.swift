@@ -12,6 +12,6 @@ struct Music {
     static let table = Table("musics")
     static let title = Expression<String>("title")
     static let artist = Expression<String>("artist")
-    static let artworkURL = Expression<URL>("artworkURL")
+    static let artwork = Expression<Data>("artwork")
     static let appleMusicURL = Expression<URL>("appleMusicURL")
 }

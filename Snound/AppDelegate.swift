@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try databaseSQLite?.run(Music.table.create(ifNotExists: true, block: { t in
                 t.column(Music.title, unique: true)
                 t.column(Music.artist)
-                t.column(Music.artworkURL)
+                t.column(Music.artwork)
                 t.column(Music.appleMusicURL)
             }))
         } catch {

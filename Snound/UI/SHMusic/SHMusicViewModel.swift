@@ -21,11 +21,11 @@ class SHMusicViewModel: SNViewModel {
         }
     }
     
-    func insertIntoDatabase(_ item: SHMatchedMediaItem) {
+    func insertIntoDatabase(item: SHMatchedMediaItem, image: UIImage) {
         do {
             guard let title = item.title,
                   let artist = item.artist,
-                  let artworkURL = item.artworkURL,
+                  let artwork = image.pngData(),
                   let appleMusicURL = item.appleMusicURL else {
                  return
              }
@@ -33,7 +33,7 @@ class SHMusicViewModel: SNViewModel {
             try dbSQLite?.run(Music.table.insert(
                 Music.title <- title,
                 Music.artist <- artist,
-                Music.artworkURL <- artworkURL,
+                Music.artwork <- artwork,
                 Music.appleMusicURL <- appleMusicURL
             ))
         } catch {

@@ -9,11 +9,16 @@ import UIKit
 import ShazamKit
 import AudioToolbox
 
+protocol SnifferDelegate: NSObject {
+    func displayBottomSheet()
+}
+
 class SnifferViewController: SNViewController {
     
     private let viewModel: SnifferViewModel = SnifferViewModel()
     private let gradient: CAGradientLayer = CAGradientLayer()
     private let animatableLayer: CAShapeLayer = CAShapeLayer()
+    private var shMusicListDelegate: SHMusicListDelegate?
     
     private lazy var snifferButton: UIButton = {
         let button = UIButton()
@@ -64,7 +69,7 @@ class SnifferViewController: SNViewController {
         view.addSubview(mainLabel)
         setupConstraints()
         super.viewDidLoad()
-        configureMusicListSheet()
+        displayBottomSheet()
     }
     
     override func viewWillTransition(to size: CGSize,
@@ -83,11 +88,15 @@ class SnifferViewController: SNViewController {
     
     @objc func sniff() {
         startSniffButtonAnimation()
-        animatableLayer.isHidden ? startSniffing() : stopSniffing()
+        animatableLayer.isHidden ? startSniffing() : {
+            stopSniffing()
+            displayBottomSheet()
+        }()
     }
     
     private func startSniffing() {
         startRadioWaveAnimation()
+        shMusicListDelegate?.dismiss()
         try? viewModel.shazamManager.startListening(delegate: self)
     }
     
@@ -144,11 +153,9 @@ class SnifferViewController: SNViewController {
     
     private func setupConstraints() {
         sharedConstraints.append(contentsOf: [
-            // SnifferButton
             snifferButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             snifferButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            // MainLabel
             mainLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainLabel.bottomAnchor.constraint(equalTo: snifferButton.topAnchor, constant: -40),
         ])
@@ -172,15 +179,19 @@ class SnifferViewController: SNViewController {
     private func mainLabelFont(size: CGFloat) {
         mainLabel.font = .boldSystemFont(ofSize: size)
     }
-    
-    private func configureMusicListSheet() {
+}
+
+extension SnifferViewController: SnifferDelegate {
+    func displayBottomSheet() {
         let viewController = SHMusicListViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.isModalInPresentation = true
         if let sheet = navigationController.sheetPresentationController {
+            sheet.largestUndimmedDetentIdentifier = .large
             sheet.detents = [.custom(resolver: { context in
                 0.15 * context.maximumDetentValue
             }), .large()]
+            self.shMusicListDelegate = viewController
             self.navigationController?.present(navigationController, animated: true)
         }
     }
@@ -198,6 +209,7 @@ extension SnifferViewController: SHSessionDelegate {
                     do {
                         let data = try await viewController.viewModel.getRemoteImage(url: artworkURL).get()
                         viewController.shMusicImage = UIImage(data: data)
+                        viewController.snifferDelegate = self
                         DispatchQueue.main.async {
                             self?.navigationController?.present(viewController, animated: true)
                         }
