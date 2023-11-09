@@ -8,8 +8,8 @@
 import Foundation
 import SQLite
 
-struct Music {
-    static let table = Table("musics")
+class MusicTable: Identifier {
+    static var name = Table("music")
     static let title = Expression<String>("title")
     static let artist = Expression<String>("artist")
     static let artwork = Expression<Data>("artwork")

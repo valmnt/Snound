@@ -8,11 +8,13 @@
 import Foundation
 import UIKit
 
-protocol SHMusicListDelegate: NSObject {
+protocol SHMusicListDelegate {
     func dismiss()
 }
 
 class SHMusicListViewController: SNViewController {
+    
+    private let viewModel: SHMusicListViewModel = SHMusicListViewModel()
     
     private lazy var topBar: UIView = {
         let view = UIView()
@@ -29,8 +31,18 @@ class SHMusicListViewController: SNViewController {
     private lazy var yourMusicLabel: UILabel = {
         let label = UILabel()
         label.text = "Your Music"
-        label.tintColor = .white
+        label.textColor = .white
         label.font = .boldSystemFont(ofSize: 27)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var counterLabel: UILabel = {
+        let label = UILabel()
+        label.text = "\(viewModel.allMusic.count)"
+        label.textColor = UIColor(resource: R.color.primary)
+        label.font = .boldSystemFont(ofSize: 27)
+        label.isHidden = viewModel.allMusic.isEmpty
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -40,22 +52,31 @@ class SHMusicListViewController: SNViewController {
     }
     
     override func viewDidLoad() {
+        viewModel.getAllMusic()
+        
         view.addSubview(topBar)
         view.addSubview(yourMusicLabel)
-        setupSmallConstraints()
+        view.addSubview(counterLabel)
+        
+        setupConstraints()
+        
         super.viewDidLoad()
     }
     
-    private func setupSmallConstraints() {
+    private func setupConstraints() {
         sharedConstraints = [
             topBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
             topBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             topBar.widthAnchor.constraint(equalToConstant: 100),
             topBar.heightAnchor.constraint(equalToConstant: 10),
             
+            counterLabel.topAnchor.constraint(equalTo: topBar.bottomAnchor, constant: 40),
+            counterLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            counterLabel.widthAnchor.constraint(equalToConstant: 50),
+            
             yourMusicLabel.topAnchor.constraint(equalTo: topBar.bottomAnchor, constant: 40),
             yourMusicLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            yourMusicLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            yourMusicLabel.trailingAnchor.constraint(equalTo: counterLabel.leadingAnchor),
         ]
     }
 }

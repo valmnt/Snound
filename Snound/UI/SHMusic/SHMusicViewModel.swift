@@ -30,11 +30,11 @@ class SHMusicViewModel: SNViewModel {
                  return
              }
             
-            try dbSQLite?.run(Music.table.insert(
-                Music.title <- title,
-                Music.artist <- artist,
-                Music.artwork <- artwork,
-                Music.appleMusicURL <- appleMusicURL
+            try dbSQLite?.run(MusicTable.name.insert(
+                MusicTable.title <- title,
+                MusicTable.artist <- artist,
+                MusicTable.artwork <- artwork,
+                MusicTable.appleMusicURL <- appleMusicURL
             ))
         } catch {
             NSLog("[SQLite] An error occured while inserting a music into the database.", error.localizedDescription)

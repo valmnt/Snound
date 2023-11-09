@@ -9,7 +9,7 @@ import UIKit
 import ShazamKit
 import AudioToolbox
 
-protocol SnifferDelegate: NSObject {
+protocol SnifferDelegate {
     func displayBottomSheet()
 }
 
