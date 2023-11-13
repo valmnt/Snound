@@ -202,7 +202,6 @@ extension SnifferViewController: SnifferDelegate {
 extension SnifferViewController: SHSessionDelegate {
     func session(_ session: SHSession, didFind match: SHMatch) {
         DispatchQueue.main.async { [weak self] in
-            self?.stopSniffing()
             if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) {
                 Task {
                     do {
@@ -214,7 +213,8 @@ extension SnifferViewController: SHSessionDelegate {
                         let data = try await viewController.viewModel.getRemoteImage(url: artworkURL).get()
                         viewController.music = Music(matchedMediaItem, artwork: data)
                         viewController.snifferDelegate = self
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [weak self] in
+                            self?.stopSniffing()
                             self?.navigationController?.present(viewController, animated: true)
                         }
                     } catch {
