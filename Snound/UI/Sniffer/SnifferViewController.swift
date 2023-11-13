@@ -183,13 +183,15 @@ class SnifferViewController: SNViewController {
 
 extension SnifferViewController: SnifferDelegate {
     func displayBottomSheet() {
+        guard viewModel.allMusicCount > 0 else { return }
+        
         let viewController = SHMusicListViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.isModalInPresentation = true
         if let sheet = navigationController.sheetPresentationController {
             sheet.largestUndimmedDetentIdentifier = .large
             sheet.detents = [.custom(resolver: { context in
-                0.15 * context.maximumDetentValue
+                0.2 * context.maximumDetentValue
             }), .large()]
             self.shMusicListDelegate = viewController
             self.navigationController?.present(navigationController, animated: true)

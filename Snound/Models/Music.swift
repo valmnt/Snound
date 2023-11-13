@@ -29,4 +29,16 @@ struct Music {
         self.artwork = artwork
         self.appleMusicURL = matchedMediaItem.appleMusicURL
     }
+    
+    static func getAllMusic(database: Connection) -> [Music] {
+        var allMusic: [Music] = []
+        do {
+            for music in try database.prepare(MusicTable.name) {
+                allMusic.append(Music(music))
+            }
+        } catch {
+            print(error)
+        }
+        return allMusic
+    }
 }

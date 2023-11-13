@@ -70,8 +70,6 @@ class SHMusicListViewController: SNViewController {
     }
     
     override func viewDidLoad() {
-        viewModel.getAllMusic()
-        
         view.addSubview(topBar)
         view.addSubview(yourMusicLabel)
         view.addSubview(counterLabel)
@@ -106,7 +104,7 @@ class SHMusicListViewController: SNViewController {
             yourMusicLabel.trailingAnchor.constraint(equalTo: counterLabel.leadingAnchor),
             
             
-            tableView.topAnchor.constraint(equalTo: yourMusicLabel.bottomAnchor, constant: 50),
+            tableView.topAnchor.constraint(equalTo: yourMusicLabel.bottomAnchor, constant: 20),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
