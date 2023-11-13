@@ -192,7 +192,18 @@ extension SHMusicListViewController: UICollectionViewDataSource {
     }
 }
 
-extension SHMusicListViewController: UICollectionViewDelegate {}
+extension SHMusicListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        DispatchQueue.main.async { [weak self] in
+           guard let viewController = UIStoryboard(name: R.storyboard.main.name, bundle: nil).instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController),
+                 let tableViewRow = (collectionView as? MusicCollectionView)?.tableViewRow,
+                 let self = self else { return }
+                
+            viewController.music = self.viewModel.allMusic[tableViewRow * self.numberPerRow + indexPath.row]
+            self.navigationController?.present(viewController, animated: true)
+        }
+    }
+}
 
 class MusicCollectionView: UICollectionView {
     var tableViewRow: Int?
@@ -232,8 +243,7 @@ class MusicCollectionViewCell: UICollectionViewCell {
     
     func setup() {
         backgroundColor = UIColor(resource: R.color.background)
-        layer.cornerRadius = 10
-        layer.masksToBounds = true
+        
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(artistLabel)

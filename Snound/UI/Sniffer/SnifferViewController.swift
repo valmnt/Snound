@@ -201,7 +201,7 @@ extension SnifferViewController: SHSessionDelegate {
     func session(_ session: SHSession, didFind match: SHMatch) {
         DispatchQueue.main.async { [weak self] in
             self?.stopSniffing()
-            if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) as? SHMusicViewController {
+            if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) {
                 Task {
                     do {
                         guard let matchedMediaItem = match.mediaItems.first,
