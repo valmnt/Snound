@@ -21,20 +21,13 @@ class SHMusicViewModel: SNViewModel {
         }
     }
     
-    func insertIntoDatabase(item: SHMatchedMediaItem, image: UIImage) {
+    func insertIntoDatabase(_ item: Music) {
         do {
-            guard let title = item.title,
-                  let artist = item.artist,
-                  let artwork = image.pngData(),
-                  let appleMusicURL = item.appleMusicURL else {
-                 return
-             }
-            
             try dbSQLite?.run(MusicTable.name.insert(
-                MusicTable.title <- title,
-                MusicTable.artist <- artist,
-                MusicTable.artwork <- artwork,
-                MusicTable.appleMusicURL <- appleMusicURL
+                MusicTable.title <- item.title,
+                MusicTable.artist <- item.artist,
+                MusicTable.artwork <- item.artwork,
+                MusicTable.appleMusicURL <- item.appleMusicURL
             ))
         } catch {
             NSLog("[SQLite] An error occured while inserting a music into the database.", error.localizedDescription)

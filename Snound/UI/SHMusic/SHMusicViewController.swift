@@ -13,8 +13,7 @@ class SHMusicViewController: SNViewController {
     
     let viewModel: SHMusicViewModel = SHMusicViewModel()
     
-    var shMusicImage: UIImage?
-    var shMusic: SHMatchedMediaItem?
+    var music: Music?
     var snifferDelegate: SnifferDelegate?
     
     private lazy var imageView: UIImageView = {
@@ -81,20 +80,20 @@ class SHMusicViewController: SNViewController {
     }()
     
     override func viewDidLoad() {
-        guard let shMusic = shMusic, let shMusicImage = shMusicImage else { return }
-
-        viewModel.insertIntoDatabase(item: shMusic, image: shMusicImage)
+        guard let music = music, let image = UIImage(data: music.artwork) else { return }
         
-        blurEffectView.backgroundColor = UIColor(patternImage: shMusicImage)
+        viewModel.insertIntoDatabase(music)
         
-        imageView.image = shMusicImage
+        blurEffectView.backgroundColor = UIColor(patternImage: image)
+        
+        imageView.image = image
         imageView.contentMode = .scaleAspectFit
         
         upwardsBlurEdge.translatesAutoresizingMaskIntoConstraints = false
         upwardsBlurEdge.backgroundColor = UIColor(resource: R.color.background)
         
-        songLabel.text = shMusic.title
-        artistLabel.text = shMusic.artist
+        songLabel.text = music.title
+        artistLabel.text = music.artist
         
         view.addSubview(blurEffectView)
         view.addSubview(imageView)
@@ -160,7 +159,7 @@ class SHMusicViewController: SNViewController {
     }
     
     @objc private func redirectToAppleMusic() {
-        guard let appleMusicURL = shMusic?.appleMusicURL else { return }
-        UIApplication.shared.open(appleMusicURL )
+        guard let appleMusicURL = music?.appleMusicURL else { return }
+        UIApplication.shared.open(appleMusicURL)
     }
 }

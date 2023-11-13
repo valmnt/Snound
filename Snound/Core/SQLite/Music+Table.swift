@@ -13,5 +13,5 @@ class MusicTable: Identifier {
     static let title = Expression<String>("title")
     static let artist = Expression<String>("artist")
     static let artwork = Expression<Data>("artwork")
-    static let appleMusicURL = Expression<URL>("appleMusicURL")
+    static let appleMusicURL = Expression<URL?>("appleMusicURL")
 }
