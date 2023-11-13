@@ -90,6 +90,7 @@ class SnifferViewController: SNViewController {
         startSniffButtonAnimation()
         animatableLayer.isHidden ? startSniffing() : {
             stopSniffing()
+            mainLabel.isHidden = false
             displayBottomSheet()
         }()
     }
@@ -97,6 +98,7 @@ class SnifferViewController: SNViewController {
     private func startSniffing() {
         startRadioWaveAnimation()
         shMusicListDelegate?.dismiss()
+        mainLabel.isHidden = true
         try? viewModel.shazamManager.startListening(delegate: self)
     }
     
