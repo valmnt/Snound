@@ -15,6 +15,7 @@ class SHMusicViewController: SNViewController {
     
     var music: Music?
     var snifferDelegate: SnifferDelegate?
+    var insertInSQLite = true
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -82,7 +83,9 @@ class SHMusicViewController: SNViewController {
     override func viewDidLoad() {
         guard let music = music, let image = UIImage(data: music.artwork) else { return }
         
-        viewModel.insertIntoDatabase(music)
+        if insertInSQLite {
+            viewModel.insertIntoDatabase(music)
+        }
         
         blurEffectView.backgroundColor = UIColor(patternImage: image)
         

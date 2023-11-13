@@ -200,6 +200,7 @@ extension SHMusicListViewController: UICollectionViewDelegate {
                  let self = self else { return }
                 
             viewController.music = self.viewModel.allMusic[tableViewRow * self.numberPerRow + indexPath.row]
+            viewController.insertInSQLite = false
             self.navigationController?.present(viewController, animated: true)
         }
     }
