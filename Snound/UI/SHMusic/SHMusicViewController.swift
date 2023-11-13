@@ -159,7 +159,12 @@ class SHMusicViewController: SNViewController {
     }
     
     @objc private func redirectToAppleMusic() {
-        guard let appleMusicURL = music?.appleMusicURL else { return }
+        guard let appleMusicURL = music?.appleMusicURL else {
+            let alert = UIAlertController(title: R.string.shMusic.appleMusicURLNilTitle.callAsFunction(), message: R.string.shMusic.appleMusicURLNilMessage.callAsFunction(), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: R.string.general.ok.callAsFunction(), style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         UIApplication.shared.open(appleMusicURL)
     }
 }

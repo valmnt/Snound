@@ -8,8 +8,8 @@
 
 "tapToRecognize" = "Appuyez pour identifier";
 
-"imageLoadingErrorTitle" = "Oops...";
-"imageLoadingErrorMessage" = "Une erreur est apparue lors de la récupération des informations.";
+"getDataErrorTitle" = "Oops...";
+"getDataErrorMessage" = "Une erreur est apparue lors de la récupération des informations.";
 
 "didNotFindMatchTitle" = "Oops...";
 "didNotFindMatchMessage" = "Nous n'avons pas pu identifier la musique. Veuillez réessayer.";

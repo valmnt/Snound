@@ -203,10 +203,12 @@ extension SnifferViewController: SHSessionDelegate {
             self?.stopSniffing()
             if let viewController = self?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.shMusicViewController) as? SHMusicViewController {
                 Task {
-                    guard let matchedMediaItem = match.mediaItems.first,
-                          let artworkURL = match.mediaItems.first?.artworkURL else { return }
-                    
                     do {
+                        guard let matchedMediaItem = match.mediaItems.first,
+                              let artworkURL = match.mediaItems.first?.artworkURL else {
+                            fatalError("[Data] match.mediaItems.first or match.mediaItems.first?.artworkURL is nil.")
+                        }
+                        
                         let data = try await viewController.viewModel.getRemoteImage(url: artworkURL).get()
                         viewController.music = Music(matchedMediaItem, artwork: data)
                         viewController.snifferDelegate = self
@@ -214,8 +216,8 @@ extension SnifferViewController: SHSessionDelegate {
                             self?.navigationController?.present(viewController, animated: true)
                         }
                     } catch {
-                        self?.displayAlert(title: R.string.sniffer.imageLoadingErrorTitle.callAsFunction(),
-                                           message: R.string.sniffer.imageLoadingErrorMessage.callAsFunction())
+                        self?.displayAlert(title: R.string.sniffer.getDataErrorTitle.callAsFunction(),
+                                           message: R.string.sniffer.getDataErrorTitle.callAsFunction())
                     }
                 }
             }

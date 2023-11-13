@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Snound
+
+  Created by Valentin Mont on 13/11/2023.
+  
+*/
+
+"appleMusicURLNilTitle" = "Ohhh...";
+"appleMusicURLNilMessage" = "Unable to find the music on Apple Music.";

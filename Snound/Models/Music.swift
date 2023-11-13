@@ -24,8 +24,8 @@ struct Music {
     }
     
     init(_ matchedMediaItem: SHMatchedMediaItem, artwork: Data) {
-        self.title = matchedMediaItem.title ?? "Unknow"
-        self.artist = matchedMediaItem.artist ?? "Unknow"
+        self.title = matchedMediaItem.title ?? R.string.general.unknow.callAsFunction()
+        self.artist = matchedMediaItem.artist ?? R.string.general.unknow.callAsFunction()
         self.artwork = artwork
         self.appleMusicURL = matchedMediaItem.appleMusicURL
     }
