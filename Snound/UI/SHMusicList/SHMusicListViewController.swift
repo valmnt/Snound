@@ -24,7 +24,7 @@ class SHMusicListViewController: SNViewController {
     }
     
     private var numberOfRows: Int {
-        Int(round(Double(viewModel.allMusic.count) / Double(numberPerRow)))
+        max(1, Int(round(Double(viewModel.allMusic.count) / Double(numberPerRow))))
     }
     
     private lazy var tableView: UITableView = {
