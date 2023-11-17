@@ -42,22 +42,34 @@ class SnifferViewController: SNViewController {
         return label
     }()
     
+    private lazy var settingsButton: UIButton = {
+        let button = UIButton()
+        button.layer.shadowColor = UIColor(resource: R.color.backgroundLight)!.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private let buttonRegularSize: CGFloat = 300
     private let buttonCompactSize: CGFloat = 150
 
     override func viewDidLoad() {
         compactCallback = { [weak self] in
             guard let self = self else { return }
-            self.responsiveSnifferButton(cornerRadius: self.buttonCompactSize / 2,
-                                         imageSize: self.buttonCompactSize / 2)
+            self.responsiveSnifferButton(cornerRadius: 75,
+                                         imageSize: CGSize(width: 75, height: 75))
             self.mainLabelFont(size: 25)
+            self.responsiveSettingsButton(size: CGSize(width: 35, height: 35))
         }
         
         regularCallback = { [weak self] in
             guard let self = self else { return }
-            self.responsiveSnifferButton(cornerRadius: self.buttonRegularSize / 2,
-                                         imageSize: self.buttonRegularSize / 2)
+            self.responsiveSnifferButton(cornerRadius: 150,
+                                         imageSize: CGSize(width: 150, height: 150))
             self.mainLabelFont(size: 40)
+            self.responsiveSettingsButton(size: CGSize(width: 55, height: 55))
         }
         
         view.setGradientBackground(gradient: gradient,colors: [
@@ -67,6 +79,7 @@ class SnifferViewController: SNViewController {
         ])
         view.addSubview(snifferButton)
         view.addSubview(mainLabel)
+        view.addSubview(settingsButton)
         setupConstraints()
         super.viewDidLoad()
         displayBottomSheet()
@@ -160,22 +173,34 @@ class SnifferViewController: SNViewController {
             
             mainLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainLabel.bottomAnchor.constraint(equalTo: snifferButton.topAnchor, constant: -40),
+            
+            settingsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
         ])
         
         regularConstraints.append(contentsOf: [
             snifferButton.widthAnchor.constraint(equalToConstant: buttonRegularSize),
             snifferButton.heightAnchor.constraint(equalToConstant: buttonRegularSize),
+            
+            settingsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
         ])
         
         compactConstraints.append(contentsOf: [
             snifferButton.widthAnchor.constraint(equalToConstant: buttonCompactSize),
             snifferButton.heightAnchor.constraint(equalToConstant: buttonCompactSize),
+            
+            settingsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
     }
     
-    private func responsiveSnifferButton(cornerRadius: CGFloat, imageSize: CGFloat) {
+    private func responsiveSnifferButton(cornerRadius: CGFloat, imageSize: CGSize) {
         snifferButton.layer.cornerRadius = cornerRadius
-        snifferButton.setImage(UIImage(resource: R.image.waveSound)?.resize(newWidth: imageSize), for: .normal)
+        snifferButton.setImage(UIImage(resource: R.image.waveSound)?.resize(targetSize: imageSize), for: .normal)
+    }
+    
+    private func responsiveSettingsButton(size: CGSize) {
+        settingsButton.setImage(UIImage(resource: R.image.gearshapeFill)?
+                        .resize(targetSize: size)
+                        .withTintColor(UIColor(resource: R.color.primary)!), for: .normal)
     }
     
     private func mainLabelFont(size: CGFloat) {
