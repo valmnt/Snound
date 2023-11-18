@@ -15,6 +15,7 @@
 		C97571A12AEA657000C2B9FF /* SHManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97571A02AEA657000C2B9FF /* SHManager.swift */; };
 		C97615CB2AF252CE00E03682 /* SNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97615CA2AF252CE00E03682 /* SNViewController.swift */; };
 		C97615CD2AF25F8400E03682 /* SHMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97615CC2AF25F8400E03682 /* SHMusicViewModel.swift */; };
+		C97963F32B092A2900762D50 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97963F22B092A2900762D50 /* SettingsViewController.swift */; };
 		C97A38DD2AD6959800DCAD0C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A38DC2AD6959800DCAD0C /* UIImage+Extension.swift */; };
 		C982541D2AF2C39A004DB330 /* UpwardsBlurEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C982541C2AF2C39A004DB330 /* UpwardsBlurEdge.swift */; };
 		C9A8E6EA2AF3BB4500B8D695 /* Sniffer.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9A8E6EC2AF3BB4500B8D695 /* Sniffer.strings */; };
@@ -48,6 +49,7 @@
 		C97571A02AEA657000C2B9FF /* SHManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHManager.swift; sourceTree = "<group>"; };
 		C97615CA2AF252CE00E03682 /* SNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNViewController.swift; sourceTree = "<group>"; };
 		C97615CC2AF25F8400E03682 /* SHMusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMusicViewModel.swift; sourceTree = "<group>"; };
+		C97963F22B092A2900762D50 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C97A38DC2AD6959800DCAD0C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C982541C2AF2C39A004DB330 /* UpwardsBlurEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpwardsBlurEdge.swift; sourceTree = "<group>"; };
 		C9A8E6EB2AF3BB4500B8D695 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Sniffer.strings; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 				C9B70A4F2AF40F89001B96BA /* SQLite */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		C97963F12B092A1E00762D50 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C97963F22B092A2900762D50 /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		C982541B2AF2C389004DB330 /* Views */ = {
@@ -237,6 +247,7 @@
 		C9C4CC0B2AD5C52F00FD7A33 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C97963F12B092A1E00762D50 /* Settings */,
 				C900743D2AFBF37A00C20AF8 /* SHMusicList */,
 				C9428F1F2AED14D500EB1510 /* SHMusic */,
 				C9BF00752AEC07950030BE9E /* Sniffer */,
@@ -410,6 +421,7 @@
 				C900743F2AFBF3B800C20AF8 /* SHMusicListViewController.swift in Sources */,
 				C97615CB2AF252CE00E03682 /* SNViewController.swift in Sources */,
 				C9C4CBFC2AD5C1E700FD7A33 /* SnifferViewController.swift in Sources */,
+				C97963F32B092A2900762D50 /* SettingsViewController.swift in Sources */,
 				C9BC4CE12AFD5086007A8E88 /* Music.swift in Sources */,
 				C9B70A4C2AF40996001B96BA /* SNViewModel.swift in Sources */,
 				C9C4CBF82AD5C1E700FD7A33 /* AppDelegate.swift in Sources */,

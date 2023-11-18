@@ -44,6 +44,7 @@ class SnifferViewController: SNViewController {
     
     private lazy var settingsButton: UIButton = {
         let button = UIButton()
+        button.addTarget(self, action: #selector(displaySettings), for: .touchUpInside)
         button.layer.shadowColor = UIColor(resource: R.color.backgroundLight)!.cgColor
         button.layer.shadowOpacity = 0.5
         button.layer.shadowOffset = .zero
@@ -82,7 +83,6 @@ class SnifferViewController: SNViewController {
         view.addSubview(settingsButton)
         setupConstraints()
         super.viewDidLoad()
-        displayBottomSheet()
     }
     
     override func viewWillTransition(to size: CGSize,
@@ -97,6 +97,7 @@ class SnifferViewController: SNViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         radioWaveAnimation()
+        displayBottomSheet()
     }
     
     @objc func sniff() {
@@ -106,6 +107,15 @@ class SnifferViewController: SNViewController {
             mainLabel.isHidden = false
             displayBottomSheet()
         }()
+    }
+    
+    @objc func displaySettings() {
+        guard let viewController = navigationController?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.settignsViewController) as? SettingsViewController else {
+            return
+        }
+        
+        shMusicListDelegate?.dismiss()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func startSniffing() {
