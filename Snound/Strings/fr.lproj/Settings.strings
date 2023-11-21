@@ -1,0 +1,9 @@
+/* 
+  Settings.strings
+  Snound
+
+  Created by Valentin Mont on 21/11/2023.
+  
+*/
+
+"deletionWarning" = "Avertissement de Suppression des Données. Toutes vos informations personnelles, paramètres, historiques et fichiers enregistrés dans l'application seront perdus. Une fois supprimées, ces données ne pourront pas être récupérées.";

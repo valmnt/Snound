@@ -26,6 +26,7 @@
 		C9BC4CE12AFD5086007A8E88 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BC4CE02AFD5086007A8E88 /* Music.swift */; };
 		C9BC4CE52AFD5630007A8E88 /* MusicList.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9BC4CE72AFD5630007A8E88 /* MusicList.strings */; };
 		C9BF00772AEC07AB0030BE9E /* SnifferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF00762AEC07AB0030BE9E /* SnifferViewModel.swift */; };
+		C9C401052B0D3880003A1AAE /* Settings.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9C401072B0D3880003A1AAE /* Settings.strings */; };
 		C9C4CBF82AD5C1E700FD7A33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4CBF72AD5C1E700FD7A33 /* AppDelegate.swift */; };
 		C9C4CBFA2AD5C1E700FD7A33 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4CBF92AD5C1E700FD7A33 /* SceneDelegate.swift */; };
 		C9C4CBFC2AD5C1E700FD7A33 /* SnifferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C4CBFB2AD5C1E700FD7A33 /* SnifferViewController.swift */; };
@@ -62,6 +63,8 @@
 		C9BC4CE62AFD5630007A8E88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MusicList.strings; sourceTree = "<group>"; };
 		C9BC4CE82AFD5633007A8E88 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MusicList.strings; sourceTree = "<group>"; };
 		C9BF00762AEC07AB0030BE9E /* SnifferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnifferViewModel.swift; sourceTree = "<group>"; };
+		C9C401062B0D3880003A1AAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
+		C9C401082B0D3884003A1AAE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Settings.strings; sourceTree = "<group>"; };
 		C9C4CBF42AD5C1E700FD7A33 /* Snound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C4CBF72AD5C1E700FD7A33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C4CBF92AD5C1E700FD7A33 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 				C92535792AF520960005221B /* General.strings */,
 				C9BC4CE72AFD5630007A8E88 /* MusicList.strings */,
 				C9061B3E2B02346F0094B55E /* SHMusic.strings */,
+				C9C401072B0D3880003A1AAE /* Settings.strings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -338,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9BC4CE52AFD5630007A8E88 /* MusicList.strings in Resources */,
+				C9C401052B0D3880003A1AAE /* Settings.strings in Resources */,
 				C9C4CC042AD5C1E700FD7A33 /* LaunchScreen.storyboard in Resources */,
 				C9A8E6EA2AF3BB4500B8D695 /* Sniffer.strings in Resources */,
 				C9061B3C2B02346F0094B55E /* SHMusic.strings in Resources */,
@@ -475,6 +480,15 @@
 				C9BC4CE82AFD5633007A8E88 /* fr */,
 			);
 			name = MusicList.strings;
+			sourceTree = "<group>";
+		};
+		C9C401072B0D3880003A1AAE /* Settings.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9C401062B0D3880003A1AAE /* en */,
+				C9C401082B0D3884003A1AAE /* fr */,
+			);
+			name = Settings.strings;
 			sourceTree = "<group>";
 		};
 		C9C4CBFD2AD5C1E700FD7A33 /* Main.storyboard */ = {

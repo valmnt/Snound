@@ -1,0 +1,9 @@
+/* 
+  Settings.strings
+  Snound
+
+  Created by Valentin Mont on 21/11/2023.
+  
+*/
+
+"deletionWarning" = "Data Deletion Warning. All your personal information, settings, history, and files saved in the application will be lost. Once deleted, these data cannot be recovered.";
