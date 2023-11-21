@@ -100,15 +100,6 @@ class SnifferViewController: SNViewController {
         displayBottomSheet()
     }
     
-    @objc func sniff() {
-        startSniffButtonAnimation()
-        animatableLayer.isHidden ? startSniffing() : {
-            stopSniffing()
-            mainLabel.isHidden = false
-            displayBottomSheet()
-        }()
-    }
-    
     @objc func displaySettings() {
         guard let viewController = navigationController?.storyboard?.instantiateViewController(withIdentifier: R.storyboard.main.settignsViewController) as? SettingsViewController else {
             return
@@ -118,16 +109,30 @@ class SnifferViewController: SNViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
+    @objc func sniff() {
+        startSniffButtonAnimation()
+        animatableLayer.isHidden ? startSniffing() : {
+            stopSniffing()
+            displayBottomSheet()
+        }()
+    }
+    
     private func startSniffing() {
         startRadioWaveAnimation()
         shMusicListDelegate?.dismiss()
-        mainLabel.isHidden = true
+        toggleUI(true)
         try? viewModel.shazamManager.startListening(delegate: self)
     }
     
     private func stopSniffing() {
         stopRadioWaveAnimation()
         viewModel.shazamManager.stopListening()
+        toggleUI(false)
+    }
+    
+    private func toggleUI(_ bool: Bool) {
+        mainLabel.isHidden = bool
+        settingsButton.isHidden = bool
     }
     
     private func radioWaveAnimation() {
