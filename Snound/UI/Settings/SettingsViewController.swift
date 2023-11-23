@@ -34,6 +34,7 @@ class SettingsViewController: SNViewController {
         let button = UIButton()
         button.setTitle(R.string.settings.deleteData.callAsFunction(), for: .normal)
         button.setTitleColor(.red, for: .normal)
+        button.addTarget(self, action: #selector(displayWarningAlert), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -68,6 +69,13 @@ class SettingsViewController: SNViewController {
         setupConstraints()
         super.viewDidLoad()
         navigationController?.navigationBar.tintColor = .white
+    }
+    
+    @objc func displayWarningAlert() {
+        let alert = UIAlertController(title: R.string.settings.dataDeletionAlertTitle.callAsFunction(), message: R.string.settings.dataDeletionAlertMessage.callAsFunction(), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: R.string.general.no.callAsFunction(), style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.general.yes.callAsFunction(), style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func setupConstraints() {

@@ -9,3 +9,6 @@
 "deletionWarning" = "Avertissement de Suppression des Données. Toutes vos informations personnelles, paramètres, historiques et fichiers enregistrés dans l'application seront perdus. Une fois supprimées, ces données ne pourront pas être récupérées.";
 
 "deleteData" = "Supprimer toutes les données";
+
+"dataDeletionAlertTitle" = "Attention !";
+"dataDeletionAlertMessage" = "La suppression sera définitive, êtes-vous sûr de vous ?";

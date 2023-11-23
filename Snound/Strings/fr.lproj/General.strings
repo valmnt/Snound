@@ -6,6 +6,8 @@
   
 */
 
+"yes" = "Oui";
+"no" = "Non";
 "ok" = "OK";
 "appleMusic" = "Apple Music";
 "unknow" = "Inconnu";
