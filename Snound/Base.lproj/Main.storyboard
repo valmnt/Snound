@@ -43,7 +43,7 @@
         <!--Music List View Controller-->
         <scene sceneID="dnL-57-q0m">
             <objects>
-                <viewController id="L9W-3K-obj" customClass="SHMusicListViewController" customModule="Snound" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SHMusicListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L9W-3K-obj" customClass="SHMusicListViewController" customModule="Snound" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mB-61-is9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
