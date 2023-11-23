@@ -10,6 +10,6 @@ import Foundation
 class SHMusicListViewModel: SNViewModel {
     
     lazy var allMusic: [Music] = {
-        Music.getAllMusic(database: dbSQLite!)
+        Music.getAllMusic(database: dbSQLite)
     }()
 }

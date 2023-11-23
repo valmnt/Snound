@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: SNViewController {
     
+    private let viewModel: SettingsViewModel = SettingsViewModel()
+    
     lazy var warningLabel: UILabel = {
         let label = UILabel()
         label.text = R.string.settings.deletionWarning.callAsFunction()
@@ -73,8 +75,10 @@ class SettingsViewController: SNViewController {
     
     @objc func displayWarningAlert() {
         let alert = UIAlertController(title: R.string.settings.dataDeletionAlertTitle.callAsFunction(), message: R.string.settings.dataDeletionAlertMessage.callAsFunction(), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: R.string.general.no.callAsFunction(), style: .destructive, handler: nil))
-        alert.addAction(UIAlertAction(title: R.string.general.yes.callAsFunction(), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.general.no.callAsFunction(), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.general.yes.callAsFunction(), style: .destructive) { _ in
+            self.viewModel.deleteAllData()
+        })
         self.present(alert, animated: true, completion: nil)
     }
     

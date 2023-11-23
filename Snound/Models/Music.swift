@@ -30,7 +30,9 @@ struct Music {
         self.appleMusicURL = matchedMediaItem.appleMusicURL
     }
     
-    static func getAllMusic(database: Connection) -> [Music] {
+    static func getAllMusic(database: Connection?) -> [Music] {
+        guard let database = database else { return [] }
+        
         var allMusic: [Music] = []
         do {
             for music in try database.prepare(MusicTable.name) {

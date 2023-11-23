@@ -12,6 +12,6 @@ class SnifferViewModel: SNViewModel {
     let shazamManager: SHManager = SHManager()
     
     var allMusicCount: Int {
-        Music.getAllMusic(database: dbSQLite!).count
+        Music.getAllMusic(database: dbSQLite).count
     }
 }
