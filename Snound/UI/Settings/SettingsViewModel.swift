@@ -9,7 +9,12 @@ import Foundation
 
 class SettingsViewModel: SNViewModel {
     
-    func deleteAllData() {
-        _ = try? dbSQLite?.run(MusicTable.name.delete())
+    func deleteAllData() -> Result<Bool, Error> {
+        do {
+            _ = try dbSQLite?.run(MusicTable.name.delete())
+            return .success(true)
+        } catch {
+            return .failure(error)
+        }
     }
 }

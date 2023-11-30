@@ -12,3 +12,6 @@
 
 "dataDeletionAlertTitle" = "Attention !";
 "dataDeletionAlertMessage" = "La suppression sera définitive, êtes-vous sûr de vous ?";
+
+"deletionErrorTitle" = "Erreur";
+"deletionErrorMessage" = "Une erreur est survenu lors de la suppression de vos données.";

@@ -77,7 +77,12 @@ class SettingsViewController: SNViewController {
         let alert = UIAlertController(title: R.string.settings.dataDeletionAlertTitle.callAsFunction(), message: R.string.settings.dataDeletionAlertMessage.callAsFunction(), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: R.string.general.no.callAsFunction(), style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: R.string.general.yes.callAsFunction(), style: .destructive) { _ in
-            self.viewModel.deleteAllData()
+            let result = try? self.viewModel.deleteAllData().get()
+            if !(result ?? false) {
+                let alert = UIAlertController(title: R.string.settings.deletionErrorTitle.callAsFunction(), message: R.string.settings.deletionErrorMessage.callAsFunction(), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: R.string.general.ok.callAsFunction(), style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         })
         self.present(alert, animated: true, completion: nil)
     }

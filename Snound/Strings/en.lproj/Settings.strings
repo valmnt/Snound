@@ -12,3 +12,6 @@
 
 "dataDeletionAlertTitle" = "Warning!";
 "dataDeletionAlertMessage" = "The deletion will be definitive, do you want to go on?";
+
+"deletionErrorTitle" = "Error";
+"deletionErrorMessage" = "An error occurred while deleting your data.";
